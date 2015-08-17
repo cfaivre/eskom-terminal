@@ -1,0 +1,92 @@
+
+/* The Magic Float Center Code */
+.float_center {
+  float: right;
+
+  position: relative;
+  left: -30%; /* or right 50% */
+  text-align: left;
+}
+.float_center > .child {
+  position: relative;
+  left: 50%;
+}
+
+/* style */
+body {
+  height:100%;
+  width:100%;
+  background-color: #f6f8f8;
+  font-family: arial, sans-serif;
+}
+.clear {
+  clear:both;
+}
+
+#title {
+  text-align: center;
+  color: #ffffff;
+  margin: 40px 0 0 0;
+}
+#subtitle {
+  text-align: center;
+  color: #A00C2F;
+  margin: 0;
+}
+#container {
+  width: 500px;
+  margin: 20px auto 0 auto;
+  background-color: #E288A0;
+  background-color: rgba(255,255,255,0.5);
+  
+  border: 7px solid #333333;
+  padding: 20px;
+  border-radius: 10px;
+}
+ul {
+  list-style-type: none;
+  margin:0;
+  padding:10px 0;
+}
+ul li {
+  float: left;
+  list-style-type: none;
+  margin: 0 6px;
+}
+ul a {
+  display: block;
+  height: 26px;
+  line-height: 26px;
+  text-decoration: none;
+  color: #C12247;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 0px 4px;
+  background-color: #ffffff;
+}
+p {
+  margin: 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 10px;
+}
+.enabled {
+  cursor: pointer;
+  opacity: 1;
+}
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
