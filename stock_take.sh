@@ -39,5 +39,4 @@ do
     echo $LINE >> ./out.txt
   fi
 
-  sleep 0.2
 done
