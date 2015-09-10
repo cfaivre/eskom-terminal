@@ -4,7 +4,7 @@
   float: right;
 
   position: relative;
-  left: -30%; /* or right 50% */
+  left: -25%; /* or right 50% */
   text-align: left;
 }
 .float_center > .child {
