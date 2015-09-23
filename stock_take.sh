@@ -20,7 +20,7 @@ then
   true
 elif [ $msg = "upload" ]
 then
-  curl --data-urlencode "file@out.txt" http://apps.staging.mshini.com/api/test
+  curl --request PUT --data-urlencode "rfids@out.txt" http://eskom-api.staging.mshini.com/api/stock_take/pi
   exit
 fi
 
