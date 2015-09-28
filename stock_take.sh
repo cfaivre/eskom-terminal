@@ -18,9 +18,18 @@ then
 elif [ $msg = "continue" ]
 then
   true
+elif [ $msg = "shutdown" ]
+then
+  sudo halt
+  exit
 elif [ $msg = "upload" ]
 then
   curl --request PUT --data-urlencode "rfids@out.txt" http://eskom-api.staging.mshini.com/api/stock_take/pi
+  exit_status = $?
+  if [ $exit_status != 0 ]
+    then
+      exit $exit_status
+  fi
   exit
 fi
 

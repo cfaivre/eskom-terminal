@@ -8,7 +8,7 @@ function openSocket( command ) {
     }
   }
   this.ws = new WebSocket('ws://localhost:8080/');
-  document.getElementById("scanning").innerHTML = "Connecting...";
+  document.getElementById("scanning").innerHTML = "Connecting to reader...";
   document.getElementById("scanning").style.color = "black";
   setTimeout(function () {
     if (this.ws.readyState != 1) {
@@ -68,6 +68,25 @@ function closeSocket() {
   document.getElementById("scanning").style.display = 'none';
   document.getElementById("spinner").style.display = 'none';
   ws.close();
+}
+
+function shutdown() {
+  var response = confirm("Are you sure you would like to shutdown?");
+  if ( response == false ) {
+    return;
+  }
+  ws = new WebSocket('ws://localhost:8080/');
+  ws.onopen = function() {
+    document.body.style.backgroundColor = '#d9534f';
+    ws.send( 'shutdown' );
+  };
+  ws.onclose = function() {
+    document.body.style.backgroundColor = null;
+  };
+  ws.onmessage = function(event) {
+    alert('shutting down!');
+    ws.close();
+  };
 }
 
 function upload() {
