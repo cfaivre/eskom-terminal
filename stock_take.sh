@@ -10,42 +10,49 @@
 
 declare file="out.txt"
 
+function read_tags {
+	exec 3<>/dev/tcp/speedwayr-10-e3-04.local/14150
+	while read LINE <&3
+	do
+	  declare regex="$LINE"
+	  declare file_content=$( cat "${file}" )
+
+	  if [[ " $file_content " =~ $regex ]]
+	  then
+	    true
+	  else
+	    echo $LINE
+	    echo $LINE >> ./out.txt
+	  fi
+
+	done
+}
+
 read msg
 
 if [ $msg = "start" ]
 then
   echo "" > ./out.txt
+  read_tags
 elif [ $msg = "continue" ]
 then
   true
+  read_tags
 elif [ $msg = "shutdown" ]
 then
   sudo halt
   exit
 elif [ $msg = "upload" ]
 then
-  curl --request PUT --data-urlencode "rfids@out.txt" http://eskom-api.staging.mshini.com/api/stock_take/pi
-  exit_status = $?
-  if [ $exit_status != 0 ]
+  curl --silent --max-time 5 --request PUT --data-urlencode "rfids@out.txt" http://eskom-api.staging.mshini.com/api/stock_take/pi > /dev/null
+  EXIT_STATUS=$?
+  if [ $EXIT_STATUS != 0 ]
     then
-      exit $exit_status
+      echo "failure"
+      exit
+  else
+    echo "success"
+    exit
   fi
-  exit
 fi
 
-exec 3<>/dev/tcp/speedwayr-10-e3-04.local/14150
-while read LINE <&3
-do
-  declare regex="$LINE"
-  declare file_content=$( cat "${file}" )
-
-
-  if [[ " $file_content " =~ $regex ]]
-  then
-    true
-  else
-    echo $LINE
-    echo $LINE >> ./out.txt
-  fi
-
-done
