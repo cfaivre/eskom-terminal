@@ -1,17 +1,4 @@
 
-/* The Magic Float Center Code */
-.float_center {
-  float: right;
-
-  position: relative;
-  left: -25%; /* or right 50% */
-  text-align: left;
-}
-.float_center > .child {
-  position: relative;
-  left: 50%;
-}
-
 /* style */
 body {
   height:100%;
@@ -21,6 +8,18 @@ body {
 }
 .clear {
   clear:both;
+}
+
+table, th , td {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+  table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+  table tr:nth-child(even) {
+  background-color: #ffffff;
 }
 
 #title {
@@ -70,9 +69,9 @@ p {
 
 .btn {
   display: inline-block;
-  padding: 6px 12px;
+  padding: 6px 6px;
   margin-bottom: 0;
-  font-size: 50px;
+  font-size: 47px;
   font-weight: 400;
   line-height: 1.42857143;
   text-align: center;

@@ -6,29 +6,22 @@
     <title>RFID Scanner</title>
   </head>
   <body>
-    <div class="float_center">
-      <table>
-        <tr>
-          <td>
-            <div id="scanning" style="display: none;">Connecting...</div>
-          </td>
-          <td>
-            <div id="spinner" style="display: none;">
-              <img src="spinner.gif" style="width: 33px; height: 33px;" alt=""/>
-              </div >
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><button id="start" class="btn enabled" style="color: #fff; background-color: #5cb85c; border-color: #4cae4c;" onclick="return openSocket('start')">Start</button></td>
-          <td><button id="continue" class="btn disabled" style="color: #fff; background-color: #337ab7; border-color: #2e6da4;" onclick="return openSocket('continue')" disabled="disabled">Continue</button></td>
-          <td><button id="stop" class="btn disabled" style="color: #fff; background-color: #f0ad4e; border-color: #eea236;" onclick="return closeSocket()" disabled="disabled">Stop</button></td>
-          <td><button id="upload" class="btn disabled" style="color: #fff; background-color: #5bc0de; border-color: #46b8da;" onclick="return upload()" disabled="disabled">Upload</button></td>
-        </tr>
-      </table>
-      <table id=tags border="1" style="margin-left: 25%;">
-      </table>
+    <div>
+      <button id="start" class="btn enabled" style="color: #fff; background-color: #5cb85c; border-color: #4cae4c;" onclick="return openSocket('start')">Start</button>
+      <button id="continue" class="btn disabled" style="color: #fff; background-color: #337ab7; border-color: #2e6da4;" onclick="return openSocket('continue')" disabled="disabled">Continue</button>
+      <button id="stop" class="btn disabled" style="color: #fff; background-color: #f0ad4e; border-color: #eea236;" onclick="return closeSocket('stop')" disabled="disabled">Stop</button>
+      <button id="upload" class="btn disabled" style="color: #fff; background-color: #5bc0de; border-color: #46b8da;" onclick="return openSocket('upload')" disabled="disabled">Upload</button>
+      <button id="shutdown" class="btn enabled" style="color: #fff; background-color: #d9534f; border-color: #d9534f;" onclick="return shutdown()">Shutdown</button>
     </div>
+    <div style="width:360px; margin: 0 auto;text-align: center;">
+      <div id="scanning" style="line-height:50px;display: none;vertical-align: middle;">Connecting...</div>
+      <div id="spinner" style="display: none;">
+        <img src="spinner.gif" style="width: 33px; height: 33px;" alt=""/>
+        </div >
+      </div>
+    </div>
+    <table id=tags border="1" style="margin-left: 30%;">
+    </table>
 
   </body>
 </html>
